@@ -46,7 +46,7 @@ namespace xadrez_console
 		public static void ImprimirTabuleiro(Tabuleiro tab, bool[,] movimentos)
 		{
 			ConsoleColor fundoOriginal = Console.BackgroundColor;
-			ConsoleColor fundoAlterado = ConsoleColor.DarkBlue;
+			ConsoleColor fundoAlterado = ConsoleColor.DarkGray;
 
 			for (int i = 0; i < tab.Linhas; i++)
 			{

@@ -16,24 +16,49 @@ namespace xadrez_console
 				PartidaDeXadrez partidaDeXadrez = new PartidaDeXadrez();
 				while (!partidaDeXadrez.Terminada)
 				{
-					Console.Clear();
-					Tela.ImprimirTabuleiro(partidaDeXadrez.Tab);
-                    Console.WriteLine();
-                    Console.Write("Digite a Posição de Origem: ");
-					Posicao origem = Tela.LerPosicao().ConvertePosicao();
+					try
+					{
+						Console.Clear();
+						Tela.ImprimirTabuleiro(partidaDeXadrez.Tab);
+						Console.WriteLine();
+						Console.WriteLine("Turno: " + partidaDeXadrez.Turno);
+						Console.WriteLine();
+						Console.WriteLine("Aguardando Jogada: " + partidaDeXadrez.JogadorAtual);
+						Console.WriteLine();
+						Console.Write("Digite a Posição de Origem: ");
+						Posicao origem = Tela.LerPosicao().ConvertePosicao();
+						partidaDeXadrez.ValidarPosicaoDeOrigem(origem);
 
-					bool[,] posicoesPossiveis = partidaDeXadrez.Tab.RetornaPeca(origem).MovimentosPecas();
+						bool[,] posicoesPossiveis = partidaDeXadrez.Tab.RetornaPeca(origem).MovimentosPecas();
 
-					Console.Clear();
 
-					Tela.ImprimirTabuleiro(partidaDeXadrez.Tab, posicoesPossiveis);
-                    Console.WriteLine();
+						Console.Clear();
 
-                    Console.Write("Digite a Posição de Destino: ");
-					Posicao destino = Tela.LerPosicao().ConvertePosicao();
+						Tela.ImprimirTabuleiro(partidaDeXadrez.Tab, posicoesPossiveis);
+						Console.WriteLine();
 
-					partidaDeXadrez.ExecutaMovimento(origem, destino);
+						Console.Write("Digite a Posição de Destino: ");
+						Posicao destino = Tela.LerPosicao().ConvertePosicao();
+						partidaDeXadrez.ValidarPosicaoDeDestino(origem, destino);
+						partidaDeXadrez.RealizaJogada(origem, destino);
 
+
+					}
+					catch (TabuleiroException e)
+					{
+						Console.WriteLine(e.Message);
+						Console.ReadLine();
+					}
+					catch (System.IndexOutOfRangeException e)
+					{
+						Console.WriteLine("Movimento Inválido!");
+						Console.ReadLine();
+					}
+					catch (System.FormatException e)
+					{
+						Console.WriteLine("Movimento Inválido!");
+						Console.ReadLine();
+					}
 				}
             }
 			catch (TabuleiroException e)
