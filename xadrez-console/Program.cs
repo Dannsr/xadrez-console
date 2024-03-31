@@ -20,6 +20,7 @@ namespace xadrez_console
 					{
 						Console.Clear();
 						Tela.ImprimirTabuleiro(partidaDeXadrez.Tab);
+						Tela.ImprimirPecasCapturadas(partidaDeXadrez);
 						Console.WriteLine();
 						Console.WriteLine("Turno: " + partidaDeXadrez.Turno);
 						Console.WriteLine();

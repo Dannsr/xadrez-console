@@ -2,6 +2,7 @@
 using System;
 using xadrez;
 using xadrez_console.xadrez;
+using System.Collections.Generic;
 
 
 namespace xadrez_console
@@ -20,6 +21,31 @@ namespace xadrez_console
 				Console.WriteLine();
 			}
 			Console.WriteLine("  a b c d e f g h");
+		}
+
+		public static void ImprimirPecasCapturadas(PartidaDeXadrez partida)
+		{
+            Console.WriteLine();
+            Console.WriteLine("Peças capturadas:");
+            Console.Write("Brancas: ");
+			ImprimirConjunto(partida.PecasCapturadas(tabuleiro.Enums.Cor.Branco));
+            Console.WriteLine();
+            Console.Write("Pretas: ");
+			ConsoleColor aux = Console.ForegroundColor;
+			Console.ForegroundColor = ConsoleColor.Magenta;
+            ImprimirConjunto(partida.PecasCapturadas(tabuleiro.Enums.Cor.Preto));
+			Console.ForegroundColor = aux;
+			Console.WriteLine();
+        }
+
+		public static void ImprimirConjunto(HashSet<Peca> conjunto)
+		{
+			Console.Write("[");
+			foreach(Peca x in conjunto)
+			{
+                Console.Write(x + " ");
+            }
+			Console.Write("]");
 		}
 		public static void ImprimirTela(Peca peca)
 		{
