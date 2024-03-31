@@ -19,15 +19,9 @@ namespace xadrez_console
 					try
 					{
 						Console.Clear();
-						Tela.ImprimirTabuleiro(partidaDeXadrez.Tab);
-						Tela.ImprimirPecasCapturadas(partidaDeXadrez);
-						Console.WriteLine();
-						Console.WriteLine("Turno: " + partidaDeXadrez.Turno);
-						Console.WriteLine();
-						Console.WriteLine("Aguardando Jogada: " + partidaDeXadrez.JogadorAtual);
-						Console.WriteLine();
-						Console.Write("Digite a Posição de Origem: ");
-						Posicao origem = Tela.LerPosicao().ConvertePosicao();
+						Tela.ImprimirPartida(partidaDeXadrez);
+                        Console.Write("Digite a Posição de Origem: ");
+                        Posicao origem = Tela.LerPosicao().ConvertePosicao();
 						partidaDeXadrez.ValidarPosicaoDeOrigem(origem);
 
 						bool[,] posicoesPossiveis = partidaDeXadrez.Tab.RetornaPeca(origem).MovimentosPecas();
@@ -61,6 +55,8 @@ namespace xadrez_console
 						Console.ReadLine();
 					}
 				}
+				Console.Clear();
+				Tela.ImprimirPartida(partidaDeXadrez);
             }
 			catch (TabuleiroException e)
 			{

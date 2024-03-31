@@ -30,6 +30,11 @@ namespace xadrez_console.tabuleiro
 			QteMovimentos++;
 		}
 
+		public void DecrementarQteMovimentos()
+		{
+			QteMovimentos--;
+		}
+
 		public bool ExisteMovimentoPossiveis()
 		{
 			bool[,] mat = MovimentosPecas();
@@ -46,7 +51,7 @@ namespace xadrez_console.tabuleiro
 			return false;
 		}
 
-		public bool PodeMoverPara(Posicao pos)
+		public bool MovimentoPossivel(Posicao pos)
 		{
 			return MovimentosPecas()[pos.Linha, pos.Coluna];
 		}
