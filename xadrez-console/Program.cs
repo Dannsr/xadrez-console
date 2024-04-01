@@ -18,7 +18,7 @@ namespace xadrez_console
 				{
 					try
 					{
-						Console.Clear();
+                        Console.Clear();
 						Tela.ImprimirPartida(partidaDeXadrez);
                         Console.Write("Digite a Posição de Origem: ");
                         Posicao origem = Tela.LerPosicao().ConvertePosicao();
@@ -55,6 +55,7 @@ namespace xadrez_console
 						Console.ReadLine();
 					}
 				}
+
 				Console.Clear();
 				Tela.ImprimirPartida(partidaDeXadrez);
             }
