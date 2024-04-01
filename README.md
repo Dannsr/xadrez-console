@@ -1,4 +1,4 @@
-# Projeto de um Jogo de Xadrez no Console do C#
+# Projeto de um Jogo de Xadrez em Console C#
 
 :chess_pawn: __Jogo de Xadrez__ :chess_pawn:
 
